@@ -11,7 +11,8 @@ To follow along with this tutorial, you'll need:
 - A GitHub account: ([https://github.com/](https://github.com/))
 
 ## Install ArgoCD on your Cluster
-```
+
+```bash
 helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update
 kubectl create namespace argocd
@@ -20,13 +21,13 @@ helm install argocd argo/argo-cd --namespace argocd
 
 ## Access ArgoCD UI
 
-```
+```bash
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
 ## Retrieve Credentials
 
-```
+```bash
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
@@ -49,6 +50,7 @@ curl -X POST http://localhost:<port>/grades \
 ```
 
 To verify, you can get all grades with:
+
 ```bash
 curl http://localhost:<port>/grades
 ```
